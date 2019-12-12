@@ -1,15 +1,4 @@
-body{
-    background-image: url('./img/backx.png');
-    background-repeat: no-repeat;
-    background-size: auto;
-    background-position: 50% 50%;
-    background-origin: padding-box;
-    background-attachment: f;
-    background-color: #16151d;
-    max-height: 100vh;
-    color: #fff;
-  }
-  .headx {
+ .headx {
       width: 100%;
       height: 50px;
       background-color:#1778f2 ;

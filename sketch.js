@@ -13,7 +13,12 @@ window.addEventListener("load", function() {
             var key = e.which || e.keyCode;
             const valx = document.querySelector("#vradius");
             if (key === 13) {
-              if (valx.value == 0 || valx.value == "") {
+              if (valx.value == 0 || valx.value == "" || valx.value > 10) {
+                var x = document.querySelector("section");
+                x.classList.remove("hidden");
+                setInterval(() => {
+                  x.classList.add("hidden");
+                }, 3000);
                 return false;
               } else {
                 let getval = valx.value;
@@ -21,7 +26,7 @@ window.addEventListener("load", function() {
                   canvasId: "canvas",
                   CORS: true,
                   imgUrl: img.src,
-                  vradius: getval
+                  vradius: parseInt(getval)
                 });
                 const before = (document.querySelector("#before").innerHTML =
                   "Sebelum Diberi Filter Gaussian Blur");
@@ -32,13 +37,17 @@ window.addEventListener("load", function() {
               event.currentTarget.value = "";
             } else if (key) {
               rst.addEventListener("click", function(f) {
-                let getrst = rst.value;
-                easyBlur({
-                  canvasId: "canvas",
-                  CORS: true,
-                  imgUrl: img.src,
-                  vradius: getrst
-                });
+                if (rst.value == "1") {
+                  let getrst = rst.value;
+                  easyBlur({
+                    canvasId: "canvas",
+                    CORS: true,
+                    imgUrl: img.src,
+                    resetrds: parseInt(getrst)
+                  });
+                } else {
+                  return false;
+                }
               });
             }
           });

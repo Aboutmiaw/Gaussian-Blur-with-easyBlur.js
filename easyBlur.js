@@ -2,6 +2,7 @@ function easyBlur(config) {
   var ID = config.canvasId;
   var img = new Image();
   var vradius = config.vradius;
+  var resetrds = config.resetrds;
   if (config.CORS !== false) {
     img.crossOrigin = "Anonymous";
   }
@@ -9,7 +10,12 @@ function easyBlur(config) {
   img.onload = function() {
     var ctx;
     var imageData;
-    var radiusx = parseInt(vradius);
+    var radiusz;
+    if (vradius >= 1 || vradius <= 10) {
+      radiusz = vradius * 10;
+    } else if (resetrds == 1) {
+      radiusz = resetrds;
+    }
     var img_width = img.width;
     var img_height = img.height;
     var canvas = document.getElementById(ID);
@@ -28,7 +34,7 @@ function easyBlur(config) {
       img_height
     );
     imageData = ctx.getImageData(0, 0, img_width, img_height);
-    imageData.data = blur(imageData, radiusx);
+    imageData.data = blur(imageData, radiusz);
     ctx.putImageData(imageData, 0, 0);
     function blur(imageData, radius, sigma) {
       console.log("running ...");
@@ -107,10 +113,11 @@ function easyBlur(config) {
       }
       return data;
     }
+
     var t0 = performance.now();
     var t1 = performance.now();
     var milliss = t0 - t1;
     const tm = document.querySelector("#time");
-    tm.textContent = "Process Time :" + " " + milliss + " ms.";
+    tm.textContent = "Process Time :" + " " + milliss.toFixed(4) + " ms.";
   };
 }

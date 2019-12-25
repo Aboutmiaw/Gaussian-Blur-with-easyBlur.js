@@ -12,7 +12,7 @@
     />
     <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
-    <title>Kelompok 3 - Citra Blur (Gaussian Blur)</title>
+    <title>easyBlur.js Implement</title>
 	<style>
       body{
         background-image: url('./img/backx.png');
@@ -30,7 +30,7 @@
   <body>
     <div class="container">
       <div class="jumbx shadowx">
-        <div class="headx"><p>Gaussian Filter menggunakan library easyBlur.js</p></div>
+        <div class="headx"><p>easyBlur.js with Gaussian Blur Algorithm</p></div>
         <div class="row text-center">
           <div class="col-6">
             <h5 id="before"></h5>
@@ -43,19 +43,21 @@
             <h5 id="after"></h5>
             <canvas class="img-fuid" id="canvas"></canvas>
           </div>
-          <div class="col-12 d mt-4">
-            <label for="#vradius">Input Radius (Gauss Kernel)</label><br />
-            <input
-              id="vradius"
-              type="text"
-              value=""
-              placeholder=""
-              onkeypress='validate(event)'
-              required
-            />&nbsp;
-            <button id="reset" class="btn btn-danger" type="submit" value="0">Reset</button><br>
+          <section class="hidden xz mt-2 mx-auto">
+              <p class="mx-auto mt-3">value tidak boleh kosong atau 0 dan tidak boleh lebih dari 10</p>       
+          </section>
+          <div class="col-12 d mt-2">
+            <label for="#vradius">Input Gaussian Kernel (Radius) 1 - 10</label>
+            <div class="input-group mx-auto">
+              <input id="vradius" type="text" class="form-control" onkeypress='validate(event)' placeholder="...." required />
+              <span class="input-group-btn">
+                <button id="reset" class="btn btn-danger" type="submit" value="1">
+                    Reset
+                </button>
+              </span>
             </div>
-            <div class="col-12 mt-4 text-right">
+          </div>
+            <div class="col-12 mt-3 text-right">
                 <p id="time"></p>
             </div>
          </div>
@@ -80,6 +82,10 @@
       crossorigin="anonymous"
     ></script>
     <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
